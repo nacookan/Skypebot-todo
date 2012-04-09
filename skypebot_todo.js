@@ -15,6 +15,10 @@ Number.prototype.pad0 = function(length){
 Date.prototype.hhmm = function(){
   return this.getHours().pad0(2) + ':' + this.getMinutes().pad0(2);
 }
+Array.prototype.indexOf = function(o){
+  for(var i in this){ if(this[i] == o) return i; }
+  return -1;
+}
 
 // skype4com
 var skype = new ActiveXObject('Skype4COM.Skype');
@@ -34,10 +38,8 @@ while(true){
   if(hhmm == last_hhmm) continue;
 
   last_hhmm = hhmm;
-  for(var i = 0; i < post_times.length; i++){
-    if(hhmm == post_times[i]){
-      post(skype);
-    }
+  if(post_times.indexOf(hhmm)){
+    post(skype);
   }
 }
 
