@@ -38,7 +38,7 @@ while(true){
   if(hhmm == last_hhmm) continue;
 
   last_hhmm = hhmm;
-  if(post_times.indexOf(hhmm)){
+  if(0 <= post_times.indexOf(hhmm)){
     post(skype);
   }
 }
